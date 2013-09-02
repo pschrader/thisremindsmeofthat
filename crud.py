@@ -8,7 +8,7 @@ def createThought(value):
     return result
 
 #read node
-def readThought(nodeID):
+def getThought(nodeID):
     thought = graph_db.node(nodeID)
     return thought['text']
 
@@ -23,3 +23,30 @@ def deleteThought(nodeID):
     thought = graph_db.node(nodeID)
     thought.delete()
     print thought
+
+#create relationship
+def createRel(thisID, relType, thatID):
+    this = graph_db.node(thisID)
+    that = graph_db.node(thatID)
+    #do a string transformation on relType
+    #so that it's UPPERCASE with _ for spaces
+    relationship = graph_db.create(
+        rel(this, relType, that)
+        )
+    #nice output would be nicer
+    return rel
+
+#read relationship
+def getRel(relID):
+    rel = graph_db.relationship(relID)
+    #if you print the rel variable you get some info
+    #returning it just gives the url, not sure how useful this function is
+    return rel
+
+#edit relationship???
+
+#delete relationship
+def deleteRel(relID):
+    rel = graph_db.relationship(relID)
+    rel.delete()
+    print rel
