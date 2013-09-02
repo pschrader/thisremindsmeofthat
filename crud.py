@@ -43,7 +43,8 @@ def getRel(relID):
     #returning it just gives the url, not sure how useful this function is
     return rel
 
-#edit relationship???
+#edit relationship
+#I think in the case of relationships you would just add a new one and delete the old one
 
 #delete relationship
 def deleteRel(relID):
