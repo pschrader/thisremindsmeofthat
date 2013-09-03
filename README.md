@@ -1,7 +1,7 @@
 thisremindsmeofthat
 ===================
 
-Neo4j based associative notebook
+Neo4j based associative notebook using py2neo to interact with the database
 
 I want to create a notebook that works more naturally with the way that my mind works. 
 
