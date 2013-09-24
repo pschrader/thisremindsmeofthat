@@ -15,3 +15,23 @@ I've played with this idea before, along with my friend Chris. I've never been q
 
 Since I'm not good at writing code this will be easier said than done.
 
+
+How to install and run
+======================
+
+Install neo4j
+
+Install py2neo
+
+Clone thisremindsmeofthat repo
+
+from the python cli 
+```python
+  import crud
+  
+  import trmtCmdLine
+  
+  crud.createThought("First thing that reminds me of that")
+  ```
+  
+  
