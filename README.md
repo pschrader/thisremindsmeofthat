@@ -27,11 +27,10 @@ Clone thisremindsmeofthat repo
 
 from the python cli 
 ```python
-  import crud
+  from trmtCmdLine import *
+  cmdLine()
   
-  import trmtCmdLine
-  
-  crud.createThought("First thing that reminds me of that")
+  enter command: add "New thing that reminds me of another thing"
   ```
   
   
