@@ -31,6 +31,7 @@ List of functions:
 #create node
 def createThought(value):
     result = graph_db.create(node(text=value))
+    print result
     return result
 
 #read node
@@ -140,7 +141,7 @@ def popularity(snippitLen=30):
     for row in data:
         print row[0]._id, '\t', textSnippit(row[0]._id, snippitLen), '\t', row[1]
 
-def textSnippit(nodeID, snippitLen = 32):
+def textSnippit(nodeID, snippitLen = 64):
     """this function is for use when displaying lists of thoughts
     it gives you a snippit string based on the text value that is
     exactly the length you want - either by trimming or padding with spaces"""

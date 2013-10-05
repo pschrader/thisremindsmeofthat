@@ -68,7 +68,6 @@ def processCommand(command):
             n.isolate()
             n.delete()
     if commandWord == 'edit':
-        ids = getIDs(command)
         editThought(ids[0], cmdPhrase)
         thought = graph_db.node(ids[0])
         print thought._id, '\t', thought['text']
