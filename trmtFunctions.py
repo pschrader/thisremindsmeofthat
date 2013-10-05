@@ -5,7 +5,10 @@ Then have a separte file that implements a command line interface"""
 
 #setup
 from py2neo import neo4j, node, rel, cypher
-graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
+neo4j_url = raw_input('Enter url of neo4j:')
+#for example:  http://localhost:7474/db/data/
+graph_db = neo4j.GraphDatabaseService(neo4j_url)
+
 
 """
 List of functions:
