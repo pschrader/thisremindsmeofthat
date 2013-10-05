@@ -25,7 +25,7 @@ Install py2neo
 
 Clone thisremindsmeofthat repo
 
-from the python cli 
+from the python client
 ```python
   from trmtCmdLine import *
   cmdLine()
@@ -34,3 +34,27 @@ from the python cli
   ```
   
   
+Using trmtCmdLine
+=====================
+trmtCmdLine is a python script that interprets command line style commands to interact with the neo4j database.  Here are some examples of using commands
+
+--Add a Thought--
+Add a thought using the "add" command followed by a quoted string that contains the text of the thought that you want to add.  Here is an example of adding a new thought where the text of the thought is "Thing A"
+
+enter command:  add "Thing A"
+
+--View All Thoughts--
+View a list of thoughts using the "ls" command. This will return a list of all thoughts and the ids of those thoughts in the neo4j database
+
+enter command:  ls
+
+--Search For Thoughts--
+Search for thoughts that contain a given keyword string using the "kwrd" command, followed by a quoted string that contains the keyword phrase you are searching for.  Here is an example of searching trmt for all the thoughts that contain the string "thing".  Keyword search is not case sensitive.
+
+enter command:  kwrd "thing"
+
+--Connecting Thoughts--
+Connect two thoughts using the "trt" command, followed by the ids of the nodes you want to connect and a quoted string for the relationship type you want to create between those nodes.  (trt stands for "this reminds me of that").  Note, the command line interface relies heavily on internal ids in neo4j, which everyone tells me is poor practice.  
+
+enter command:  trt 1 2 "REMINDS_ME_OF"
+

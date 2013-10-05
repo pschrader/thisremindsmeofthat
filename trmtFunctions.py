@@ -1,5 +1,79 @@
-from crud import *
-from py2neo import cypher
+"""This is a This Reminds Me of That Fuction libary
+The idea is to put all the useful functions in one organized list
+Then have a separte file that implements a command line interface"""
+
+
+#setup
+from py2neo import neo4j, node, rel, cypher
+graph_db = neo4j.GraphDatabaseService("http://localhost:7474/db/data/")
+
+"""
+List of functions:
+- createThought
+- getThought
+- editThought
+- deleteThought
+- createRel
+- getRel
+- deleteRel
+- showThoughts
+- keywordSearch
+- showRelated
+- popularity
+- textSnippit
+- delRel
+- repRel
+- printQuery
+"""
+#create node
+def createThought(value):
+    result = graph_db.create(node(text=value))
+    return result
+
+#read node
+def getThought(nodeID):
+    thought = graph_db.node(nodeID)
+    return thought['text']
+
+#update node
+def editThought(nodeID, text):
+    thought = graph_db.node(nodeID)
+    thought['text'] = text
+    return thought
+
+#delete node
+def deleteThought(nodeID):
+    thought = graph_db.node(nodeID)
+    thought.delete()
+    print thought
+
+#create relationship
+def createRel(thisID, relType, thatID):
+    this = graph_db.node(thisID)
+    that = graph_db.node(thatID)
+    #do a string transformation on relType
+    #so that it's UPPERCASE with _ for spaces
+    relationship = graph_db.create(
+        rel(this, relType, that)
+        )
+    #nice output would be nicer
+    return rel
+
+#read relationship
+def getRel(relID):
+    rel = graph_db.relationship(relID)
+    #if you print the rel variable you get some info
+    #returning it just gives the url, not sure how useful this function is
+    return rel
+
+#edit relationship
+#I think in the case of relationships you would just add a new one and delete the old one
+
+#delete relationship
+def deleteRel(relID):
+    rel = graph_db.relationship(relID)
+    rel.delete()
+    print rel
 
 def showThoughts(snippitLen=30):
     snippitLine = "="
@@ -78,6 +152,21 @@ def textSnippit(nodeID, snippitLen = 32):
         snippit = raw
     return snippit
 
+def delRel(nodeID, nodeID2):
+    query = 'START n=node(' + str(nodeID) + '), m=node(' + str(nodeID2) + ') \
+    MATCH (n)-[r]-(m) \
+    DELETE r'
+    data, metadata = cypher.execute(graph_db, query)
 
+def repRel(nodeID, nodeID2, newRel):
+    delRel(nodeID, nodeID2)
+    createRel(nodeID, newRel, nodeID2)
 
-    
+def printQuery(query):
+    data, metadata = cypher.execute(graph_db, query)
+    for row in data:
+        line = ''
+        for col in row:
+            line += str(col)
+            line += '\t'
+        print line[0:-1]
