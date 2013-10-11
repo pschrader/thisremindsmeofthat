@@ -42,7 +42,7 @@ def processCommand(command):
     ids = getIDs(command)
 
     if commandWord == 'add':
-        createThought(cmdPhrase)
+        createThought(cmdPhrase, thought_owner)
     if commandWord == 'ls':
         showThoughts()
     if commandWord == 'kwrd':
@@ -50,7 +50,7 @@ def processCommand(command):
     if commandWord == 'pop':
         popularity()
     if commandWord == 'trt': 
-        createRel(ids[0], cmdPhrase, ids[1])
+        createRel(ids[0], cmdPhrase, ids[1], thought_owner)
     if commandWord == 'sr':
         showRelated(ids[0])
     if commandWord == 'delrel':

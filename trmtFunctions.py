@@ -8,6 +8,8 @@ from py2neo import neo4j, node, rel, cypher
 neo4j_url = raw_input('Enter url of neo4j:')
 #for example:  http://localhost:7474/db/data/
 graph_db = neo4j.GraphDatabaseService(neo4j_url)
+thought_owner = raw_input('Enter your name, thinker:')
+
 
 
 """
@@ -29,8 +31,8 @@ List of functions:
 - printQuery
 """
 #create node
-def createThought(value):
-    result = graph_db.create(node(text=value))
+def createThought(value, thought_owner):
+    result = graph_db.create(node(text=value, owner=thought_owner))
     print result
     return result
 
@@ -52,7 +54,7 @@ def deleteThought(nodeID):
     print thought
 
 #create relationship
-def createRel(thisID, relType, thatID):
+def createRel(thisID, relType, thatID, thought_owner):
     this = graph_db.node(thisID)
     that = graph_db.node(thatID)
     #do a string transformation on relType
