@@ -96,7 +96,7 @@ def showThoughts(snippitLen=30):
 
 def keywordSearch(keyword):
     query = 'START n=node(*) \
-        WHERE n.text! =~ "(?i).*' + keyword + '.*" \
+        WHERE HAS (n.text) and n.text =~ "(?i).*' + keyword + '.*" \
         RETURN n'
     data, metadata = cypher.execute(graph_db, query)
     for row in data:
