@@ -81,13 +81,15 @@ def deleteRel(relID):
     rel.delete()
     print rel
 
-def showThoughts(snippitLen=30):
+def showThoughts(snippitLen=70):
     snippitLine = "="
     for i in range(1,snippitLen):
         snippitLine += "="
     query = 'START n=node(*) \
         WHERE HAS (n.text) \
-        RETURN n'
+        RETURN n \
+        ORDER BY ID(n) DESC \
+        LIMIT 17'
     data, metadata = cypher.execute(graph_db, query)
     print 'ID' + '\t' + 'Thought'
     print '====' + '\t' + snippitLine
