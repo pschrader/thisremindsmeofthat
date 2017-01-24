@@ -166,6 +166,28 @@ search ()
 }
 
 
+### The Last function shows you the last x thoughts added to the notebook. ###
+### See endnote x for more info				                   ###
+last ()
+{
+	#First remove the existing "last" lines from the index
+	sed /^z[0-9]/d index.txt > tempindex.txt
+	mv tempindex.txt index.txt
+	number=$2
+	ticker=1
+	clear
+	echo Last $number thoughts:
+	printf "\n"
+	tail -$number $notebook \
+	| while read -r line ; do
+		result=$(echo $line | grep -o '|.*|' | sed 's/|/  /g')
+		
+		printf "z$ticker: $result\n\n" | fold -s
+		
+		echo "z$ticker:$line" | grep -o '.*|.*|' >> index.txt
+		ticker=$((ticker+1))
+		done
+}
 ### The Nixpins function removes the pointsers form  index   ###
 ### See endnote x for more info				     ###
 nixpins ()
@@ -399,6 +421,7 @@ main ()
 		setnotebook*	)	setnotebook $command;;
 		go*		)	go $command;;
 		merge*		)	merge $command;;
+		last*		)	last $command;;
 		*		)	clear;echo "Unknown command: $command";
 	esac
 }

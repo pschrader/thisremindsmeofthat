@@ -63,4 +63,11 @@ Merge allows you to take one thought and replace another with it. So if you type
 
 Do you want to maintain separate notebooks? No problem. By default trmt will add thoughts to a file called notebook.txt but you can say "setnotebook othernotebook.txt" and change that. "Othernotebook" can be whatever you want.
 
+Todo:
+-----
+Either follow through on adding endnotes to the code or take out the references to them.
+Add recent thoughts.
+Add random thoughts.
+Add contemporaneous thoughts. 
+
 Happy thinking!
