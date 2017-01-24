@@ -15,6 +15,8 @@ In particular I am pleased with the simplicity of my most recent approach. The e
 
 For these reasons, the current script file is called "trmt6.sh" but I'll probably adjust that now that I've gone fancy and put this on github.
 
+Current explainer video: https://www.youtube.com/watch?v=N0jJYqTjVfY&t=1s
+
 
 using thisremindsmeofthat
 =========================
