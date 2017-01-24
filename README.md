@@ -57,6 +57,8 @@ Other stuff:
 
 Have you cluttered up your pinned thoughts? No problem. Just type "nixpins" to clear them all out.
 
+Looking for a thought you added recently? Type last followed by a number to get the last x thoughts. Example "last 5" for the last 5 thoughts.
+
 Did you make a mistake? Use the merge option.
 
 Merge allows you to take one thought and replace another with it. So if you type "merge p0 p5" then the end result will be that thought p5 goes away and all it's inbound and outbound links now reference p5 instead. (It's like p5 never existed...). Merge currently does the work you would expect out of merge, edit, and delete.
